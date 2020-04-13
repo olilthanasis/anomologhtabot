@@ -11,8 +11,8 @@ import random
 while True:
     ###step 1 get email data###
     try:
-        user = "botbot666toulil@gmail.com"
-        pwd = "MPXgzGfXkmC5vvy3"
+        user = "**********"
+        pwd = "*********"
         imap_url = "imap.gmail.com"
         con = imaplib.IMAP4_SSL(imap_url)
         con.login(user, pwd)
@@ -62,7 +62,7 @@ while True:
             w, h = draw.textsize(line, font=font)
             draw.text(((MAX_W - w) / 2, current_h), line, font=font, fill="white")
             current_h += h + pad
-        source =r"C:\Users\mitth\Desktop\pics\img" + str(random.randint(0, 100000)) + ".jpg"
+        source =r"C:\Users\*****\*****\*****\img" + str(random.randint(0, 100000)) + ".jpg"
         im.save(source, "JPEG")
 
 
@@ -72,10 +72,11 @@ while True:
         ###step 4 image  using the API###
 
         bot = Bot()
-        bot.login(username="3ogelanomologhtabot",
-                  password="r&a#@8curUA;y$1h/n+%bPtcG+7YCG")
+        bot.login(username="**********",
+                  password="************")
         bot.upload_photo(source,
-                         caption="New Post")
+                         caption="New Post/ngithub:https://github.com/olilthanasis/anomologhtabot/edit/master/fin_bot.py")
+        bot.send_message(astr,["*******"])
         print("check 4")
         time.sleep(5)
     except TypeError:
