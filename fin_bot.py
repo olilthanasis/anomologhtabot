@@ -75,7 +75,7 @@ while True:
         bot.login(username="**********",
                   password="************")
         bot.upload_photo(source,
-                         caption="New Post/ngithub:https://github.com/olilthanasis/anomologhtabot/edit/master/fin_bot.py")
+                         caption="New Post/n github: https://github.com/olilthanasis/anomologhtabot")
         bot.send_message(astr,["*******"])
         print("check 4")
         time.sleep(5)
