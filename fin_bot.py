@@ -4,15 +4,16 @@ from instabot import Bot
 import imaplib
 import time
 import textwrap
-import os
+from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 import random
 
-while True:
-    ###step 1 get email data###
+
+def main():
     try:
-        user = "**********"
-        pwd = "*********"
+        ###step 1 get email data###
+        user = "botbot666toulil@gmail.com"
+        pwd = "*******************"
         imap_url = "imap.gmail.com"
         con = imaplib.IMAP4_SSL(imap_url)
         con.login(user, pwd)
@@ -31,24 +32,14 @@ while True:
             cleantext = re.sub(cleanr, '', raw_html)
             return cleantext
 
-
         text = (get_body(raw))
         text = text.decode('utf-8')
         text = cleanhtml(text)
         text = text[:-2]
-        print("check 1")
         print(text)
         ###step 2 delete seen email###
-
-
-
         con.store(b'1', '+FLAGS', '\\Deleted')
-        print("check 2")
-
-
-
         ###step 3 load text into image generator###
-
         astr = text
         para = textwrap.wrap(astr, width=15)
         print(astr)
@@ -56,29 +47,33 @@ while True:
         im = Image.new('RGB', (MAX_W, MAX_H), (0, 0, 0, 0))
         draw = ImageDraw.Draw(im)
         font = ImageFont.truetype("arial.ttf", 28, encoding="utf-8")
-
         current_h, pad = 50, 10
         for line in para:
             w, h = draw.textsize(line, font=font)
             draw.text(((MAX_W - w) / 2, current_h), line, font=font, fill="white")
             current_h += h + pad
-        source =r"C:\Users\*****\*****\*****\img" + str(random.randint(0, 100000)) + ".jpg"
+        source = r"C:\Users\mitth\Desktop\pics\img" + str(random.randint(0, 100000)) + ".jpg"
         im.save(source, "JPEG")
-
-
-        print("check 3")
-
-
         ###step 4 image  using the API###
 
         bot = Bot()
-        bot.login(username="**********",
-                  password="************")
+        bot.login(username="3ogelanomologhtabot",
+                  password="************************")
         bot.upload_photo(source,
-                         caption="New Post/n github: https://github.com/olilthanasis/anomologhtabot")
-        bot.send_message(astr,["*******"])
-        print("check 4")
+                         caption="New Post\n github: https://github.com/olilthanasis/anomologhtabot")
+        bot.send_message(astr, ["lil_thanasis"])
+        # step 5 add answer to the text logs###
+        now = datetime.now()
+        with open(r"C:\Users\mitth\Desktop\logs.txt", "a") as myfile:
+            myfile.write("\n" + astr + str(now))
         time.sleep(5)
     except TypeError:
         time.sleep(5)
         pass
+
+
+while True:
+    try:
+        main()
+    except:
+        main()
